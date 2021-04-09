@@ -104,7 +104,11 @@ lastData = pd.concat(lData)
 
 print("--- %s seconds ---" % (time.time() - start_time))
 
-#%%
+#%% Juntar e salvar o DataFrame para trainamento das NN
+
+testMergeD = pd.concat([dataFrameMD, lastData], axis=1)
+testMergeD.to_csv(r'dataFrameQP2.csv')
+
 
 
 #%% sem parallel processing
