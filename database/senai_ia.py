@@ -9,7 +9,7 @@
 
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr  9 15:11:55 2021
+Created on Wed Apr  9 15:18:31 2021
 
 @author: juan
 """
@@ -20,6 +20,7 @@ Created on Wed Apr  9 15:11:55 2021
 
 import time
 import pandas as pd
+from pandas import DataFrame
 #import dask.dataframe as dd
 #from dask_ml.linear_model import LogisticRegression
 import numpy as np
@@ -57,7 +58,8 @@ range1 = [i for i in range(0,800000-1)]
 mean_1=[]
 std_1=[]
 range_med = range(1,total_med)
-#%%
+#%% 
+#Leitura para Mean e STD com pool
 
 start_time = time.time()
 
@@ -85,9 +87,25 @@ if __name__ == '__main__':
     # atrib_med = np.array(atrib_med,dtype="object")
 print("--- %s seconds ---" % (time.time() - start_time))
 
-#%% Salvar Dataframe para treinamento
+#%% Salvar Dataframe de Mean e STD para treinamento
 
-dataFrameMD = {'mean': atrib_med[:][0], 'std': atrib_med[:][1]}
+dataFrameMD = DataFrame(atrib_med,columns=['mean', 'std'])
+
+#%%
+
+#%% 
+#Leitura 3 últimas colunas com chunksize
+
+start_time = time.time()
+
+range_cols = range(800001,800003) #id não é relevante
+lData = pd.read_csv(file,nrows=500,chunksize=20,usecols=range_cols,header=0,engine='python') #No. Bytes to use 
+lastData = pd.concat(lData)
+
+print("--- %s seconds ---" % (time.time() - start_time))
+
+#%%
+
 
 #%% sem parallel processing
 # mean_2=[]
