@@ -2,7 +2,8 @@
 
 Script em Python para o processo seletivo do SENAI com IA.
 
-Dataset não disponível na pasta DATASET, baixar de: https://drive.google.com/file/d/17LPP_ZZprHIG3R2f0Vhg5CyfFZOMvlia/view?usp=sharing
+Dataset não disponível na pasta "senai_ia/database",
+baixar de: https://drive.google.com/file/d/17LPP_ZZprHIG3R2f0Vhg5CyfFZOMvlia/view?usp=sharing
 
 Etapas do processamento
 
