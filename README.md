@@ -1,4 +1,4 @@
-#README First
+-#README First
 
 Script em Python para o processo seletivo do SENAI com IA.
 
