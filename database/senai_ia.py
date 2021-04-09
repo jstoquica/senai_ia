@@ -1,6 +1,3 @@
-
-# coding: utf-8
-
 # In[ ]:
 
 
@@ -12,7 +9,7 @@
 
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr  7 23:11:55 2021
+Created on Wed Apr  9 15:11:55 2021
 
 @author: juan
 """
@@ -75,7 +72,7 @@ def limit_cpu():
     "is called at every process start"
     p = psutil.Process(os.getpid())
     # set to lowest priority, this is windows only, on Unix use ps.nice(19)
-    p.nice(psutil.LOW_PRIORITY_CLASS)
+    p.nice(10)
 
     
 if __name__ == '__main__':
@@ -112,22 +109,22 @@ dataFrameMD = {'mean': atrib_med[:][0], 'std': atrib_med[:][1]}
 # print("--- %s seconds ---" % (time.time() - start_time))
 
 # In[ ]:
-
-#Examine the class label imbalance 'target'
-df.head()
-
-neg, pos = np.bincount(df['target'])
-total = neg + pos
-print('Examples:\n    Total: {}\n    Positive target: {} ({:.2f}% of total)\n'.format(
-    total, pos, 100 * pos / total))
-
-# In[ ]:
-# Clean, split and normalize the data
-
-cleaned_df = df.copy()
-
-# You don't want the `signal_id` column.
-cleaned_df.pop('signal_id')
+###############################################
+##Examine the class label imbalance 'target'
+#df.head()
+#
+#neg, pos = np.bincount(df['target'])
+#total = neg + pos
+#print('Examples:\n    Total: {}\n    Positive target: {} ({:.2f}% of total)\n'.format(
+#    total, pos, 100 * pos / total))
+#
+## In[ ]:
+## Clean, split and normalize the data
+#
+#cleaned_df = df.copy()
+#
+## You don't want the `signal_id` column.
+#cleaned_df.pop('signal_id')
 
 
 # In[ ]:
